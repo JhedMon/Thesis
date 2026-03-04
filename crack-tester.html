@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Crack Tester - Password Strategy Vulnerability Analysis</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Password Strategy Analysis</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="overview.html" class="nav-link">Overview</a></li>
+                <li><a href="methodology.html" class="nav-link">Methodology</a></li>
+                <li><a href="tree.html" class="nav-link">Decision Tree</a></li>
+                <li><a href="architecture.html" class="nav-link">System</a></li>
+                <li><a href="crack-tester.html" class="nav-link">Crack Tester</a></li>
+                <li><a href="features.html" class="nav-link">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Password Tester Section -->
+    <section class="password-tester" id="tester">
+        <div class="container">
+            <h2 class="section-title">Interactive Password Strength Tester</h2>
+            <div class="tester-layout">
+                <div class="tester-main">
+                    <div class="tester-container">
+                        <input type="password" id="passwordInput" class="password-input" placeholder="Enter a password to test..." onkeyup="checkPassword()">
+                        <button id="toggleBtn" class="toggle-btn" onclick="togglePassword()">👁️</button>
+                    </div>
+
+                    <div id="strengthResult" class="strength-result"></div>
+
+                    <!-- Vulnerability Classification -->
+                    <div id="vulnerabilityResult" class="vulnerability-result" style="display: none;">
+                        <h4>🎯 Vulnerability Classification</h4>
+                        <div id="vulnerabilityType" class="vulnerability-type"></div>
+                        <div id="vulnerabilityExplain" class="vulnerability-explain"></div>
+                    </div>
+                </div>
+
+                <aside class="tester-sidebar">
+                    <div class="sidebar-top-row">
+                        <!-- Feature Vector Display -->
+                        <div id="featureVector" class="feature-vector" style="display: none;">
+                            <h4>📊 Extracted Feature Vector (CE Phase)</h4>
+                            <div id="vectorDisplay" class="vector-display"></div>
+                            <p style="font-size: 0.85rem; color: rgba(236, 240, 241, 0.6); margin-top: 1rem;">
+                                <em>📌 Feature Vector is generated during Characteristics Extraction (CE) phase and used for Tree-Based Classification (TBC)</em>
+                            </p>
+                        </div>
+
+                        <div class="criteria-list">
+                            <h4>Password Criteria:</h4>
+                            <ul id="criteriaList"></ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Password Strategy Vulnerability Research | Cybersecurity Thesis Project</p>
+            <p>Decision Tree-Based Supervised Classification of User Generated Passwords</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
