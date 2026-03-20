@@ -1470,3 +1470,35 @@ body {
         max-width: 100%;
     }
 }
+
+.recommendation-box {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: rgba(15, 52, 96, 0.6);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--highlight-color);
+    backdrop-filter: blur(10px);
+}
+
+.recommendation-box h4 {
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+}
+
+.recommendation-box ul {
+    list-style: none;
+}
+
+.recommendation-box li {
+    padding: 0.5rem 0;
+    padding-left: 25px;
+    position: relative;
+    color: rgba(236, 240, 241, 0.85);
+}
+
+.recommendation-box li::before {
+    content: '💡';
+    position: absolute;
+    left: 0;
+}
