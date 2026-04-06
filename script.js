@@ -215,7 +215,6 @@ function checkPassword() {
         if (criteriaList) criteriaList.innerHTML = '';
         if (vulnerabilityResult) vulnerabilityResult.style.display = 'none';
         if (featureVector) featureVector.style.display = 'none';
-
         return;
     }
 
@@ -335,8 +334,6 @@ function checkPassword() {
 
     // Display Feature Vector
     displayFeatureVector(features);
-
-    displayRecommendations(vulnerability, features);
 }
 
 // ===== Display Vulnerability Result =====
@@ -530,64 +527,3 @@ createMobileMenu();
 // ===== Password strength tester initialization =====
 console.log('Password Strategy Vulnerability Analysis - Decision Tree Classification System Loaded');
 console.log('Ready to evaluate user passwords and provide vulnerability assessments');
-
-// ===== Display Recommendations =====
-function displayRecommendations(vulnerability, features) {
-    const box = document.getElementById('recommendationBox');
-    const list = document.getElementById('recommendationList');
-
-    box.style.display = 'block';
-
-    let recommendations = [];
-
-    // Feature-based recommendations (PERSONALIZED)
-const password = document.getElementById('passwordInput').value;
-
-// Detect sequence
-const seqMatch = password.match(/abc|bcd|cde|def|123|234|345|456|567|678|789/i);
-if (seqMatch) {
-    recommendations.push(`Avoid sequence "${seqMatch[0]}" found in your password`);
-}
-
-// Detect repetition
-const repMatch = password.match(/(.)\1{2,}/);
-if (repMatch) {
-    recommendations.push(`Avoid repeated characters like "${repMatch[0]}"`);
-}
-
-// Detect numeric suffix
-const numSuffix = password.match(/\d+$/);
-if (numSuffix) {
-    recommendations.push(`Avoid predictable numeric ending "${numSuffix[0]}"`);
-}
-
-// Detect dictionary word (simple highlight)
-for (let word of commonDictionary) {
-    if (password.toLowerCase().includes(word)) {
-        recommendations.push(`Avoid using common word "${word}" in your password`);
-        break;
-    }
-}
-
-// Missing symbol
-if (!features.has_symbol) {
-    recommendations.push(`Add at least one special character (e.g., @, #, $)`);
-}
-
-// Short length
-if (features.length < 12) {
-    recommendations.push(`Increase length (current: ${features.length}, recommended: 12+)`);
-}
-
-// Suggest better placement of symbols (smart tip)
-if (features.numeric_suffix || features.symbol_affix) {
-    recommendations.push(`Try modifying your password by inserting symbols in the middle instead of the end`);
-}
-    // Render
-    let html = '';
-    recommendations.forEach(rec => {
-        html += `<li>${rec}</li>`;
-    });
-
-    list.innerHTML = html;
-}
